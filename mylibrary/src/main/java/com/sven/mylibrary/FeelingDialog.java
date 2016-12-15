@@ -105,9 +105,7 @@ public class FeelingDialog {
     }
 
     public void show() {
-        if (isShowing ) {
-            return;
-        }else {
+        if (!isShowing ) {
             setMaskType(SVProgressHUDMaskType.Black);
             mSharedView.setVisibility(View.VISIBLE);
             mSharedView.start();
