@@ -18,6 +18,7 @@ public class CenterView extends CardView {
 
     private ImageView waveImageView;
     private Context context;
+    private WaveDrawable mWaveDrawable;
 
     public CenterView(Context context) {
         this(context, null);
@@ -37,25 +38,31 @@ public class CenterView extends CardView {
         waveImageView = (ImageView) LayoutInflater.from(context).inflate(R.layout.view_wave, null, false);
         addView(waveImageView);
 
-        WaveDrawable mWaveDrawable = new WaveDrawable(context, R.drawable.bg_feeling_loading);
+        mWaveDrawable = new WaveDrawable(context, R.drawable.bg_feeling_loading);
         mWaveDrawable.setIndeterminate(true);
         mWaveDrawable.setWaveSpeed(40);
         mWaveDrawable.setWaveAmplitude(150);
         mWaveDrawable.setWaveLength(400);
         mWaveDrawable.setColorFilter(Color.parseColor("#ffcb4f"), PorterDuff.Mode.SRC_ATOP);
+        mWaveDrawable.stop();
         waveImageView.setImageDrawable(mWaveDrawable);
         setContentPadding(DensityUtil.dip2px(20), DensityUtil.dip2px(20), DensityUtil.dip2px(20), DensityUtil.dip2px(20));
         setCardBackgroundColor(Color.parseColor("#ffffff"));
         setCardElevation(DensityUtil.dip2px(10));
         setRadius(DensityUtil.dip2px(10));
+    }
 
+    public void start() {
+        mWaveDrawable.start();
+    }
 
+    public void stop() {
+        mWaveDrawable.stop();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(DensityUtil.dip2px(140), DensityUtil.dip2px(140));
-
     }
 }

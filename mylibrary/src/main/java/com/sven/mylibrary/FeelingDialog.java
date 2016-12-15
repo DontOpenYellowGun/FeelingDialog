@@ -107,6 +107,7 @@ public class FeelingDialog {
     public void show() {
         setMaskType(SVProgressHUDMaskType.Black);
         mSharedView.setVisibility(View.VISIBLE);
+        mSharedView.start();
         svShow();
     }
 
@@ -163,12 +164,12 @@ public class FeelingDialog {
 
     public void dismiss() {
         //消失动画
+        mSharedView.stop();
         outAnim.setAnimationListener(outAnimListener);
         mSharedView.startAnimation(outAnim);
         if (onDismissListener != null) {
             onDismissListener.onDismiss(this);
         }
-
     }
 
     public void dismissImmediately() {
