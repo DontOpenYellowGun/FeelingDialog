@@ -105,10 +105,14 @@ public class FeelingDialog {
     }
 
     public void show() {
-        setMaskType(SVProgressHUDMaskType.Black);
-        mSharedView.setVisibility(View.VISIBLE);
-        mSharedView.start();
-        svShow();
+        if (isShowing ) {
+            return;
+        }else {
+            setMaskType(SVProgressHUDMaskType.Black);
+            mSharedView.setVisibility(View.VISIBLE);
+            mSharedView.start();
+            svShow();
+        }
     }
 
     public void showWithMaskType(SVProgressHUDMaskType maskType) {
