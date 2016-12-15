@@ -53,8 +53,9 @@ public class CenterView extends CardView {
     }
 
     @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(DensityUtil.dip2px(140), DensityUtil.dip2px(140));
 
     }
 }
