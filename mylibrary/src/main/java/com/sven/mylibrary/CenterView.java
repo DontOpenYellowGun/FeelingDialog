@@ -44,7 +44,6 @@ public class CenterView extends CardView {
         mWaveDrawable.setWaveAmplitude(150);
         mWaveDrawable.setWaveLength(400);
         mWaveDrawable.setColorFilter(Color.parseColor("#ffcb4f"), PorterDuff.Mode.SRC_ATOP);
-        mWaveDrawable.stop();
         waveImageView.setImageDrawable(mWaveDrawable);
         setContentPadding(DensityUtil.dip2px(20), DensityUtil.dip2px(20), DensityUtil.dip2px(20), DensityUtil.dip2px(20));
         setCardBackgroundColor(Color.parseColor("#ffffff"));

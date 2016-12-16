@@ -67,8 +67,8 @@ public class FeelingDialog {
     protected void initDefaultView() {
         mSharedView = new CenterView(context);
         params.gravity = gravity;
-        params.width=DensityUtil.dip2px(140);
-        params.height=DensityUtil.dip2px(140);
+        params.width = DensityUtil.dip2px(140);
+        params.height = DensityUtil.dip2px(140);
         mSharedView.setLayoutParams(params);
     }
 
@@ -105,7 +105,7 @@ public class FeelingDialog {
     }
 
     public void show() {
-        if (!isShowing ) {
+        if (!isShowing) {
             setMaskType(SVProgressHUDMaskType.Black);
             mSharedView.setVisibility(View.VISIBLE);
             mSharedView.start();
@@ -165,13 +165,16 @@ public class FeelingDialog {
     }
 
     public void dismiss() {
-        //消失动画
-        mSharedView.stop();
-        outAnim.setAnimationListener(outAnimListener);
-        mSharedView.startAnimation(outAnim);
-        if (onDismissListener != null) {
-            onDismissListener.onDismiss(this);
-        }
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                mSharedView.stop();
+                outAnim.setAnimationListener(outAnimListener);
+                mSharedView.startAnimation(outAnim);
+                if (onDismissListener != null) {
+                    onDismissListener.onDismiss(FeelingDialog.this);
+                }
+            }
+        }, 400);
     }
 
     public void dismissImmediately() {
